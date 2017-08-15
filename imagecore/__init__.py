@@ -25,6 +25,17 @@ def create_wkt_element(geom):
     return WKTElement(geom.wkt, srid=4326)
 
 
+def tif16to8(img, lower_pct=1, upper_pct=99):
+    """Rescale the bands of a multichannel image"""
+    img_scaled = np.zeros(img.shape, np.uint8)
+    for i in range(img.shape[2]):
+        band = img[:, :, i]
+        lower, upper = np.percentile(band, [lower_pct, upper_pct])
+        band = (band - lower) / (upper - lower) * 255
+        img_scaled[:, :, i] = np.clip(band, 0, 255).astype(np.uint8)
+    return img_scaled
+
+
 class ImageGrab:
     """
     Extract features in a geojson from imagery
