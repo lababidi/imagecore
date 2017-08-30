@@ -92,7 +92,6 @@ class ImageGrab:
 
 class Record:
     def __init__(self, image, mask):
-        print(image, mask)
         self.image = image
         self.mask = mask
         self.geotransform = None
