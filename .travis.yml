@@ -3,3 +3,6 @@ deploy:
   user: lababidi
   password:
     secure: OsH3pQZ6hfiBfAp+rSXIjGe8v2/OLl2pJqSOUvo96Y/kh96VcGaDjEgHwWb8aPsDDtDwjMosztfHaWwFZkc6lpo7AwfKByNkMz04qoRRDjd9LWgDl8d5OkDlUlbAMndKueF8FfvYOaefpzJ4IDUqdz6pG1W88qo5oL5DNtwc6bW26Wr0swSOsu4P0H4j+cKR4zpAPhRPN6Ksr0Pbf/UorxsU2+HSUytrjTrVkiqp6XsFyoLx3ihYchLC2EfIDGXPZWkoX9MP+I/NFT+rAKp9/vky1Il+diTwzU+BxSIyW622aXwN9yHNo3X2IlYlRgTPx5gXPpJ/L55YTXKlcKwdoKB0doXmihALEmz2+mGc3oSz0FrgGV496cqRCC4YXqKhjwWa119B4k2I/mV2siKcVt2giG3IMEpT/WX3dmljgoJf8lD+9ld5+kDDNFAwkyj5QYMwTni/Lk/yC9xixpjqDSCFIgRuNXxURRXz25l8JKfeW8/f5Zxn0+CzW05zB2XqYQZMyJ6UN/XXdC4xV8ii0JxF3fn8HefXceiFkcTbShleCnuDX125C/q9ZG5hb/4OGNUmwbByqJcm+PRB6rPS5I2oueQUycb9Gua7ub7650wpCZOB5wzazc75WPdfK8M/KzRjiAE/IQ4mTG4DGE1YywU/a+R7Qj2wV1vWlyzGrag=
+  on:
+    branch: master
+    tags: false

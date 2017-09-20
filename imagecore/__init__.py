@@ -40,6 +40,39 @@ def tif16to8(img, lower_pct=1, upper_pct=99):
     return img_scaled
 
 
+def find_tif(path, output=None):
+    """
+
+    :param path:
+    :param output:
+    :return:
+    """
+    for root, dirs, files in os.walk(path):
+        if not any(['MS.tif' in file or 'PAN.tif' in file for file in files]):
+            continue
+        ms = pan = None
+        for file in files:
+            if file.endswith('MS.tif'):
+                ms = file
+            elif file.endswith('PAN.tif'):
+                pan = file
+            elif file.endswith('.IMD'):
+                with open(os.path.join(path, root, file)) as f:
+                    cat_id = [line.split('"')[1] for line in f.readlines() if 'CatId' in line][0]
+        if ms is None or pan is None:
+            raise FileNotFoundError('PAN and MS not together', files, not any(['MS.tif' in file or 'PAN.tif' for file in files]))
+
+        pan_name = os.path.join(path, root, pan)
+        ms_name = os.path.join(path, root, ms)
+        if output:
+            ps_name = os.path.join(output, '{}.tif'.format(cat_id))
+        else:
+            ps_name = os.path.join(path, root, '{}.tif'.format(cat_id))
+
+        log.info(pan, ms, path, root)
+        yield pan_name, ms_name, ps_name
+
+
 class ImageGrab:
     """
     Extract features in a geojson from imagery

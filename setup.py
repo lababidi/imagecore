@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='imagecore',
     packages=['imagecore'],  # this must be the same as the name above
-    version='0.1.1',
+    version='0.1.3',
     description='A helper library for parsing Large tifs to feed into ML frameworks',
     author='Mahmoud Lababidi',
     author_email='lababidi@gmail.com',
@@ -11,6 +11,6 @@ setup(
     download_url='https://github.com/lababidi/imagecore/archive/0.1.tar.gz',  # I'll explain this in a second
     keywords=['imagery', 'raster', 'machinelearning'],  # arbitrary keywords
     classifiers=[],
-    install_requires=['rasterio', 'shapely'],
+    install_requires=['rasterio==1.0a9', 'shapely', 'geoalchemy2', 'opencv-python'],
     python_requires='>=3',
 )
