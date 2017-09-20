@@ -58,7 +58,10 @@ def find_tif(path, output=None):
                 pan = file
             elif file.endswith('.IMD'):
                 with open(os.path.join(path, root, file)) as f:
-                    cat_id = [line.split('"')[1] for line in f.readlines() if 'CatId' in line][0]
+                    lines = f.readlines()
+                    cat_id = [line.split('"')[1] for line in lines if 'CatId' in line][0]
+                    acq_date = [line.split('"')[1] for line in lines if 'generationTime' in line][0]
+
         if ms is None or pan is None:
             raise FileNotFoundError('PAN and MS not together', files, not any(['MS.tif' in file or 'PAN.tif' for file in files]))
 
@@ -70,7 +73,7 @@ def find_tif(path, output=None):
             ps_name = os.path.join(path, root, '{}.tif'.format(cat_id))
 
         log.info(pan, ms, path, root)
-        yield pan_name, ms_name, ps_name
+        yield pan_name, ms_name, ps_name, acq_date
 
 
 class ImageGrab:

@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='imagecore',
     packages=['imagecore'],  # this must be the same as the name above
-    version='0.1.3',
+    version='0.1.5',
     description='A helper library for parsing Large tifs to feed into ML frameworks',
     author='Mahmoud Lababidi',
     author_email='lababidi@gmail.com',
